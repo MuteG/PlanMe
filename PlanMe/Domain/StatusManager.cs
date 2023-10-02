@@ -15,13 +15,14 @@ public static class StatusManager
 
     public static IReadOnlyList<StatusSet> Sets => _sets.Values.ToList();
 
-    public static StatusSet Get<T>()
+    public static StatusSet Get<T>() where T : PlanItem
     {
-        if (!_sets.ContainsKey(typeof(T)))
-        {
-            _sets.Add(typeof(T), new StatusSet());
-        }
-
-        return _sets[typeof(T)];
+        return Get(typeof(T));
+    }
+    
+    public static StatusSet Get(Type type)
+    {
+        _sets.TryAdd(type, new StatusSet());
+        return _sets[type];
     }
 }
