@@ -13,12 +13,5 @@ public class MainWindowViewModel : ViewModelBase
         Inbox = new InboxViewModel(tasks);
     }
     
-    public string Greeting => "Welcome to Avalonia!";
-    
     public InboxViewModel Inbox { get; }
-
-    public void AddTask()
-    {
-        
-    }
 }

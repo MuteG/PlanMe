@@ -11,4 +11,9 @@ public class PlanService
     {
         return Inbox.Instance.Items.Select(i => new TaskModel{Text = i.Name}).ToList();
     }
+
+    public void AddInboxTask(string name)
+    {
+        Inbox.Instance.Add(name);
+    }
 }

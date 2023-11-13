@@ -7,8 +7,6 @@ public class Inbox : TaskContainer
     static Inbox()
     {
         _instance = new Inbox();
-        _instance.Add("Test1");
-        _instance.Add("Test2");
     }
 
     public static Inbox Instance => _instance;

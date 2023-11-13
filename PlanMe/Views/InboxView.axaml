@@ -9,11 +9,12 @@
              x:DataType="vm:InboxViewModel"
              >
     <DockPanel Margin="3">
-        <Button DockPanel.Dock="Bottom"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Center">
-            Add Task
-        </Button>
+        <TextBox Name="TextBoxAddTask" DockPanel.Dock="Bottom"
+                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Left"
+                 Watermark="Add Task"
+                 KeyDown="InputElement_OnKeyDown">
+        </TextBox>
         <ScrollViewer>
             <ItemsControl ItemsSource="{Binding InboxTasks}">
                 <ItemsControl.ItemTemplate>

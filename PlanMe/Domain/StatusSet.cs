@@ -4,6 +4,15 @@ namespace PlanMe.Domain;
 
 public class StatusSet : Container<Status>
 {
+    public StatusSet(string id)
+    {
+        Id = id;
+    }
+
+    public string Id { get; }
+    
+    public string Name { get; set; }
+    
     public Status Add(string name, Color color)
     {
         var status = new Status(IdGenerator.New("S"))

@@ -22,7 +22,7 @@ public static class StatusManager
     
     public static StatusSet Get(Type type)
     {
-        _sets.TryAdd(type, new StatusSet());
+        _sets.TryAdd(type, new StatusSet(IdGenerator.New("SS")));
         return _sets[type];
     }
 }
