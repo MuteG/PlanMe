@@ -29,11 +29,11 @@ public abstract class PlanItem : TaskContainer
 
     public TimeSpan ExpectedWorkingTime { get; set; }
 
-    public DateTime ActualStartDate { get; protected set; }
+    public DateTime ActualStartDate { get; set; }
 
-    public DateTime ActualCompleteDate { get; protected set; }
+    public DateTime ActualCompleteDate { get; set; }
 
-    public TimeSpan ActualWorkingTime { get; protected set; }
+    public TimeSpan ActualWorkingTime { get; set; }
 
     public bool IsDelay => DateTime.Today > ExpectedCompleteDate;
     

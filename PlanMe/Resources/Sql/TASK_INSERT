@@ -1,0 +1,25 @@
+﻿INSERT INTO task (
+    id
+    , name
+    , status_id
+    , expected_start_date
+    , expected_complete_date
+    , expected_working_time
+    , actual_start_date
+    , actual_complete_date
+    , actual_working_time
+    , difficulty
+    , priority
+) VALUES (
+    @id
+    , @name
+    , @status_id
+    , @expected_start_date
+    , @expected_complete_date
+    , @expected_working_time
+    , @actual_start_date
+    , @actual_complete_date
+    , @actual_working_time
+    , @difficulty
+    , @priority
+)

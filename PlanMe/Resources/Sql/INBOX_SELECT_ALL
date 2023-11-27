@@ -1,0 +1,25 @@
+SELECT
+    t.id
+    , t.name
+    , t.status_id
+    , s.name AS "status_name"
+    , s.color AS "status_color"
+    , s.status_type
+    , t.expected_start_date
+    , t.expected_complete_date
+    , t.expected_working_time
+    , t.actual_start_date
+    , t.actual_complete_date
+    , t.actual_working_time
+    , t.difficulty
+    , t.priority
+FROM
+    inbox i
+LEFT JOIN
+    task t
+ON
+    t.id = i.task_id
+LEFT JOIN
+    status s
+ON
+    s.id = t.status_id

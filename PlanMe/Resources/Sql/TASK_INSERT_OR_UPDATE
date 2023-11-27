@@ -1,0 +1,36 @@
+INSERT INTO task (
+    id
+    , name
+    , status_id
+    , expected_start_date
+    , expected_complete_date
+    , expected_working_time
+    , actual_start_date
+    , actual_complete_date
+    , actual_working_time
+    , difficulty
+    , priority
+) VALUES (
+    @id
+    , @name
+    , @status_id
+    , @expected_start_date
+    , @expected_complete_date
+    , @expected_working_time
+    , @actual_start_date
+    , @actual_complete_date
+    , @actual_working_time
+    , @difficulty
+    , @priority
+)
+ON CONFLICT(id) DO UPDATE SET
+    name = excluded.name
+    , status_id = excluded.status_id
+    , expected_start_date = excluded.expected_start_date
+    , expected_complete_date = excluded.expected_complete_date
+    , expected_working_time = excluded.expected_working_time
+    , actual_start_date = excluded.actual_start_date
+    , actual_complete_date = excluded.actual_complete_date
+    , actual_working_time = excluded.actual_working_time
+    , difficulty = excluded.difficulty
+    , priority = excluded.priority

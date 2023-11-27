@@ -1,0 +1,5 @@
+INSERT INTO inbox (
+    task_id
+) VALUES (
+    @task_id
+)

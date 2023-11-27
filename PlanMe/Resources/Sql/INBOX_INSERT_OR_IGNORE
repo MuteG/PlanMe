@@ -1,0 +1,5 @@
+﻿INSERT OR IGNORE INTO inbox (
+    task_id
+) VALUES (
+    @task_id
+)
