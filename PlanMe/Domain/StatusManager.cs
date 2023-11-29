@@ -12,6 +12,8 @@ public static class StatusManager
     {
         _sets = new Dictionary<Type, StatusSet>();
     }
+    
+    // TODO 既存状态集初始化
 
     public static IReadOnlyList<StatusSet> Sets => _sets.Values.ToList();
 

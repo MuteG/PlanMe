@@ -2,7 +2,7 @@
 
 namespace PlanMe.Repository;
 
-public interface ITaskRepository
+public interface ITaskRepository : IPlanMeRepository
 {
     void Add(Task task);
 

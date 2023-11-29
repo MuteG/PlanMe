@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace PlanMe.Domain;
 
@@ -15,6 +16,7 @@ public abstract class PlanItem : TaskContainer
         ActualWorkingTime = TimeSpan.Zero;
         ActualStartDate = DateTime.UnixEpoch;
         ActualCompleteDate = DateTime.UnixEpoch;
+        Status = StatusSet.Default.Items.First(s => s.Type == StatusType.Waiting);
     }
     
     public string Id { get; }

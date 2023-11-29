@@ -34,7 +34,8 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.5" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5" />
         <PackageReference Include="Dapper" Version="2.1.24" />
-        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.0" />
+        <PackageReference Include="NLog" Version="5.2.7" />
+        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
     </ItemGroup>
 
     <ItemGroup>
@@ -43,24 +44,22 @@
 
     <ItemGroup>
       <None Remove="plan.db" />
-      <Resource Include="plan.db">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
+      <AvaloniaResource Include="plan.db" />
       <None Remove="Resources\Sql\INBOX_DELETE" />
-      <Resource Include="Resources\Sql\INBOX_DELETE" />
+      <AvaloniaResource Include="Resources\Sql\INBOX_DELETE" />
       <None Remove="Resources\Sql\INBOX_INSERT" />
-      <Resource Include="Resources\Sql\INBOX_INSERT" />
+      <AvaloniaResource Include="Resources\Sql\INBOX_INSERT" />
       <None Remove="Resources\Sql\INBOX_INSERT_OR_IGNORE" />
-      <Resource Include="Resources\Sql\INBOX_INSERT_OR_IGNORE" />
+      <AvaloniaResource Include="Resources\Sql\INBOX_INSERT_OR_IGNORE" />
       <None Remove="Resources\Sql\INBOX_SELECT_ALL" />
-      <Resource Include="Resources\Sql\INBOX_SELECT_ALL" />
+      <AvaloniaResource Include="Resources\Sql\INBOX_SELECT_ALL" />
       <None Remove="Resources\Sql\TASK_DELETE_BY_ID" />
-      <Resource Include="Resources\Sql\TASK_DELETE_BY_ID" />
+      <AvaloniaResource Include="Resources\Sql\TASK_DELETE_BY_ID" />
       <None Remove="Resources\Sql\TASK_INSERT" />
-      <Resource Include="Resources\Sql\TASK_INSERT" />
+      <AvaloniaResource Include="Resources\Sql\TASK_INSERT" />
       <None Remove="Resources\Sql\TASK_INSERT_OR_UPDATE" />
-      <Resource Include="Resources\Sql\TASK_INSERT_OR_UPDATE" />
+      <AvaloniaResource Include="Resources\Sql\TASK_INSERT_OR_UPDATE" />
       <None Remove="Resources\Sql\TASK_SELECT_BY_ID" />
-      <Resource Include="Resources\Sql\TASK_SELECT_BY_ID" />
+      <AvaloniaResource Include="Resources\Sql\TASK_SELECT_BY_ID" />
     </ItemGroup>
 </Project>

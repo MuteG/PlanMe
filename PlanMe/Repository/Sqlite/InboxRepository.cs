@@ -6,13 +6,12 @@ namespace PlanMe.Repository.Sqlite;
 
 public class InboxRepository : SqliteRepository, IInboxRepository
 {
-    public InboxRepository(DapperContext context) : base(context)
-    {
-    }
-
     public void Save(Inbox inbox)
     {
-        Execute(Sql("INBOX_INSERT_OR_IGNORE"), inbox.Items.Select(i => i.Id).ToList());
+        foreach (var task in inbox.Items)
+        {
+            Execute(Sql("INBOX_INSERT_OR_IGNORE"), new { TaskId = task.Id });
+        }
     }
 
     public void Remove(string taskId)
@@ -22,7 +21,7 @@ public class InboxRepository : SqliteRepository, IInboxRepository
 
     public Inbox Get()
     {
-        var inbox = new Inbox();
+        var inbox = Inbox.Instance;
         inbox.AddRange(Query<TaskModel>(Sql("INBOX_SELECT_ALL")).Select(m => m.ToTask()));
         return inbox;
     }

@@ -2,7 +2,7 @@
 
 namespace PlanMe.Repository;
 
-public interface IInboxRepository
+public interface IInboxRepository : IPlanMeRepository
 {
     void Save(Inbox inbox);
 

@@ -9,5 +9,9 @@ public class Inbox : TaskContainer
         _instance = new Inbox();
     }
 
+    private Inbox()
+    {
+    }
+
     public static Inbox Instance => _instance;
 }

@@ -5,13 +5,9 @@ namespace PlanMe.Repository.Sqlite;
 
 public class TaskRepository : SqliteRepository, ITaskRepository
 {
-    public TaskRepository(DapperContext context) : base(context)
-    {
-    }
-
     public void Add(Task task)
     {
-        Execute(Sql("TASK_INSERT"), task);
+        Execute(Sql("TASK_INSERT"), task.ToModel());
     }
 
     public void Remove(Task task)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Reflection;
+using Avalonia.Platform;
 using Dapper;
 
 namespace PlanMe.Repository.Sqlite;
@@ -12,9 +12,9 @@ public abstract class SqliteRepository : IRepositoryTransaction
     private readonly DapperContext _context;
     private IDbTransaction _transaction;
 
-    protected SqliteRepository(DapperContext context)
+    protected SqliteRepository()
     {
-        _context = context;
+        _context = DapperContext.Sqlite;
     }
 
     IDbTransaction IRepositoryTransaction.Transaction
@@ -25,25 +25,15 @@ public abstract class SqliteRepository : IRepositoryTransaction
 
     protected string Sql(string name)
     {
-        var resource = $"PlanMe.Resources.Sql.{name}.txt";
-        Assembly assembly = Assembly.GetExecutingAssembly();
-        using (var stream = assembly.GetManifestResourceStream(resource))
-        {
-            if (stream != null)
-            {
-                using (var reader = new StreamReader(stream))
-                {
-                    return reader.ReadToEnd();
-                }
-            }
-        }
-
-        return string.Empty;
+        var resource = $"avares://PlanMe/Resources/Sql/{name}";
+        using var stream = AssetLoader.Open(new Uri(resource));
+        using var reader = new StreamReader(stream);
+        return reader.ReadToEnd();
     }
     
     protected IEnumerable<T> Query<T>(string sql, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.Query<T>(sql, param);
@@ -57,7 +47,7 @@ public abstract class SqliteRepository : IRepositoryTransaction
     protected IEnumerable<TReturn> Query<TFirst, TSecond, TReturn>(string sql,
         Func<TFirst, TSecond, TReturn> map, string splitOn, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.Query(sql, map, param, splitOn: splitOn);
@@ -70,7 +60,7 @@ public abstract class SqliteRepository : IRepositoryTransaction
     
     protected T QuerySingle<T>(string sql, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.QuerySingle<T>(sql, param);
@@ -83,7 +73,7 @@ public abstract class SqliteRepository : IRepositoryTransaction
     
     protected T QuerySingleOrDefault<T>(string sql, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.QuerySingleOrDefault<T>(sql, param);
@@ -96,7 +86,7 @@ public abstract class SqliteRepository : IRepositoryTransaction
     
     protected T ExecuteScalar<T>(string sql, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.ExecuteScalar<T>(sql, param);
@@ -109,7 +99,7 @@ public abstract class SqliteRepository : IRepositoryTransaction
     
     protected int Execute(string sql, object param = null)
     {
-        if (_transaction == null)
+        if (_transaction?.Connection == null)
         {
             using var conn = _context.CreateConnection();
             return conn.Execute(sql, param);

@@ -26,6 +26,6 @@ public static class IdGenerator
     private static string Current(string prefix)
     {
         _dictionary.TryAdd(prefix, 0);
-        return $"{prefix}{_dictionary[prefix].ToString().PadLeft(10 - prefix.Length, '0')}";
+        return $"{prefix}{_dictionary[prefix].ToString().PadLeft(11 - prefix.Length, '0')}";
     }
 }
