@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace PlanMe.Domain;
 
@@ -26,15 +27,19 @@ public class Task : PlanItem
     public void Complete()
     {
         if (Items.Count > 0) return;
-        var set = StatusManager.Get(GetType());
-        var complete = set.Items.FirstOrDefault(s => s.Type == StatusType.Complete);
-        if (complete != null)
+        if (TrySetStatus(StatusType.Complete))
         {
-            Status = complete;
+            Stop();
+            SetParentStatus(Parent, StatusType.Complete);
         }
-        
-        CompleteParentStatus(Parent);
-        Stop();
+    }
+
+    public void Resume()
+    {
+        if (TrySetStatus(StatusType.Waiting))
+        {
+            SetParentStatus(Parent, StatusType.Waiting);
+        }
     }
     
     private Project GetParentProject()
@@ -47,19 +52,15 @@ public class Task : PlanItem
         };
     }
 
-    private void CompleteParentStatus(PlanItem parent)
+    private void SetParentStatus(PlanItem parent, StatusType type)
     {
-        if (parent == null || parent.Items.Any(t => t.Status.Type != StatusType.Complete)) return;
-        var set = StatusManager.Get(parent.GetType());
-        var complete = set.Items.FirstOrDefault(s => s.Type == StatusType.Complete);
-        if (complete != null)
+        if (parent == null || parent.Items.Any(t => t.Status.Type != type)) return;
+        if (parent.TrySetStatus(type))
         {
-            parent.Status = complete;
-        }
-
-        if (parent is Task parentTask)
-        {
-            CompleteParentStatus(parentTask.Parent);
+            if (parent is Task parentTask)
+            {
+                SetParentStatus(parentTask.Parent, type);
+            }
         }
     }
 

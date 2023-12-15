@@ -8,5 +8,7 @@ public interface ITaskRepository : IPlanMeRepository
 
     void Remove(Task task);
 
+    void Set(Task task);
+
     Task Get(string id);
 }

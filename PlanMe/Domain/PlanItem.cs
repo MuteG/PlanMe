@@ -69,9 +69,21 @@ public abstract class PlanItem : TaskContainer
 
         OnStop();
     }
-
+    
     protected virtual void OnStop()
     {
+    }
+    
+    public bool TrySetStatus(StatusType type)
+    {
+        var status = GetStatus(type);
+        if (status != null)
+        {
+            Status = status;
+            return true;
+        }
+
+        return false;
     }
     
     protected override void OnAdd(Task item)
@@ -84,5 +96,11 @@ public abstract class PlanItem : TaskContainer
     {
         base.OnRemove(item);
         item.Parent = null;
+    }
+
+    private Status GetStatus(StatusType type)
+    {
+        var set = StatusManager.Get(GetType());
+        return set.Items.FirstOrDefault(s => s.Type == type);
     }
 }

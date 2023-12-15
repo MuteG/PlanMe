@@ -12,7 +12,12 @@ public class TaskRepository : SqliteRepository, ITaskRepository
 
     public void Remove(Task task)
     {
-        Execute(Sql("TASK_DELETE"), new { task.Id });
+        Execute(Sql("TASK_DELETE_BY_ID"), new { task.Id });
+    }
+
+    public void Set(Task task)
+    {
+        Execute(Sql("TASK_UPDATE"), task.ToModel());
     }
 
     public Task Get(string id)

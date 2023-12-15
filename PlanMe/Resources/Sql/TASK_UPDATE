@@ -1,0 +1,15 @@
+﻿UPDATE
+    task
+SET
+    name = @Name
+    , status_id = @StatusId
+    , expected_start_date = @ExpectedStartDate
+    , expected_complete_date = @ExpectedCompleteDate
+    , expected_working_time = @ExpectedWorkingTime
+    , actual_start_date = @ActualStartDate
+    , actual_complete_date = @ActualCompleteDate
+    , actual_working_time = @ActualWorkingTime
+    , difficulty = @Difficulty
+    , priority = @Priority
+WHERE
+    id = Id

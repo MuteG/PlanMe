@@ -24,7 +24,13 @@ public static class StatusManager
     
     public static StatusSet Get(Type type)
     {
-        _sets.TryAdd(type, new StatusSet(IdGenerator.New("SS")));
+        _sets.TryAdd(type, StatusSet.Default);
+        return _sets[type];
+    }
+
+    public static StatusSet NewSet(Type type)
+    {
+        _sets[type] = new StatusSet(IdGenerator.New(Constant.Prefix.STATUS_SET));
         return _sets[type];
     }
 }

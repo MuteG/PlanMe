@@ -8,6 +8,7 @@ public static class TaskExtension
     {
         return new TaskModel
         {
+            Id = task.Id,
             IsComplete = task.Status.Type == StatusType.Complete,
             Text = task.Name
         };

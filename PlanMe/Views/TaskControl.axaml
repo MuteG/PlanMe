@@ -16,15 +16,15 @@
             CornerRadius="3"
             Padding="3">
         <DockPanel>
-            <!-- Drag Handle -->
-            <!-- <Border Width="20" Background="Gray" PointerPressed="Handle_DragStart" PointerMoved="Handle_Dragging" PointerReleased="Handle_DragEnd"/> -->
-            <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsComplete}"></CheckBox>
-        
-            <!-- Buttons -->
-            <Button Width="30" DockPanel.Dock="Right" Content="..."/>
-        
-            <!-- Text Display -->
-            <TextBlock Text="{Binding Text}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 0"/>
+            <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsComplete}" VerticalAlignment="Center"></CheckBox>
+            <Label Content="{Binding Text}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                   Background="White" Foreground="{Binding Foreground}" VerticalContentAlignment="Center">
+                <Label.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Delete" Click="MenuItem_OnClick"/>
+                    </ContextMenu>
+                </Label.ContextMenu>
+            </Label>
         </DockPanel>
     </Border>
 </UserControl>

@@ -16,7 +16,7 @@ public class InboxRepository : SqliteRepository, IInboxRepository
 
     public void Remove(string taskId)
     {
-        Execute(Sql("INBOX_DELETE"), new { taskId });
+        Execute(Sql("INBOX_DELETE"), new { TaskId = taskId });
     }
 
     public Inbox Get()

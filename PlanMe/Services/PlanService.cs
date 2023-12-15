@@ -13,10 +13,16 @@ public class PlanService
         if (Inbox.Instance.Items.Count == 0)
         {
             var repo = RepositoryFactory.Create<IInboxRepository>();
-            repo.Get();
+            var inbox = repo.Get();
+            var maxTaskId = inbox.Items.MaxBy(i => i.Id)?.Id ?? $"{Constant.Prefix.TASK}0";
+            var currentId = int.Parse(maxTaskId.TrimStart(Constant.Prefix.TASK.ToArray()));
+            IdGenerator.Initialize(Constant.Prefix.TASK, currentId);
         }
         
-        return Inbox.Instance.Items.Select(i => i.ToModel()).ToList();
+        return Inbox.Instance.Items
+            .OrderBy(i => i.Status.Type)
+            .Select(i => i.ToModel())
+            .ToList();
     }
 
     public void AddInboxTask(string name)
@@ -29,5 +35,43 @@ public class PlanService
         inboxRepo.Save(Inbox.Instance);
         taskRepo.Add(task);
         tran.Commit();
+    }
+
+    public void RemoveTask(string id)
+    {
+        // TODO 根据Task所属删除Task
+        var task = Inbox.Instance.Remove(id);
+        if (task != null)
+        {
+            var inboxRepo = RepositoryFactory.Create<IInboxRepository>();
+            var taskRepo = RepositoryFactory.Create<ITaskRepository>();
+            var tran = new TransactionManager(DapperContext.Sqlite, inboxRepo, taskRepo);
+            tran.Begin();
+            inboxRepo.Remove(id);
+            taskRepo.Remove(task);
+            tran.Commit();
+        }
+    }
+
+    public void CompleteTask(string id)
+    {
+        var task = Inbox.Instance.Items.FirstOrDefault(i => i.Id == id);
+        if (task != null)
+        {
+            task.Complete();
+            var taskRepo = RepositoryFactory.Create<ITaskRepository>();
+            taskRepo.Set(task);
+        }
+    }
+    
+    public void ResumeTask(string id)
+    {
+        var task = Inbox.Instance.Items.FirstOrDefault(i => i.Id == id);
+        if (task != null)
+        {
+            task.Resume();
+            var taskRepo = RepositoryFactory.Create<ITaskRepository>();
+            taskRepo.Set(task);
+        }
     }
 }

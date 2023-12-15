@@ -46,7 +46,7 @@ public class StatusSet : Container<Status>
     
     public Status Add(string name, Color color, StatusType type)
     {
-        var status = new Status(IdGenerator.New("S"))
+        var status = new Status(IdGenerator.New(Constant.Prefix.STATUS))
         {
             Name = name,
             Color = color,
