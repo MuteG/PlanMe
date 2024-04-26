@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:views="clr-namespace:PlanMe.Views"
+             xmlns:v="clr-namespace:PlanMe.Views"
              xmlns:vm="clr-namespace:PlanMe.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="PlanMe.Views.InboxView"
@@ -19,7 +19,13 @@
             <ItemsControl ItemsSource="{Binding InboxTasks}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <views:TaskControl Padding="0, 0, 0, 3"></views:TaskControl>
+                        <v:TaskControl Padding="0, 0, 0, 3" IsCompleteChanged="TaskControl_OnIsCompletedChanged">
+                            <v:TaskControl.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Name="MenuDelete" Header="Delete" Click="MenuDelete_OnClick" />
+                                </ContextMenu>
+                            </v:TaskControl.ContextMenu>
+                        </v:TaskControl>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

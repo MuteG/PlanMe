@@ -9,7 +9,7 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         _planService = new PlanService();
-        var tasks = _planService.GetInboxTasks();
+        var tasks = _planService.GetInboxTasks(true);
         Inbox = new InboxViewModel(tasks);
     }
     

@@ -16,14 +16,16 @@
             CornerRadius="3"
             Padding="3">
         <DockPanel>
-            <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsComplete}" VerticalAlignment="Center"></CheckBox>
-            <Label Content="{Binding Text}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                   Background="White" Foreground="{Binding Foreground}" VerticalContentAlignment="Center">
-                <Label.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Delete" Click="MenuItem_OnClick"/>
-                    </ContextMenu>
-                </Label.ContextMenu>
+            <CheckBox Name="ChkComplete"
+                      DockPanel.Dock="Left"
+                      IsChecked="{Binding IsComplete}"
+                      VerticalAlignment="Center"></CheckBox>
+            <Label Content="{Binding Text}"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Background="White"
+                   Foreground="{Binding Foreground}"
+                   VerticalContentAlignment="Center">
             </Label>
         </DockPanel>
     </Border>

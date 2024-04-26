@@ -13,6 +13,8 @@
         <Version>0.0.0.1</Version>
         <Authors>gaoyunpeng1982@gmail.com</Authors>
         <Description>Plan my task easier.</Description>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

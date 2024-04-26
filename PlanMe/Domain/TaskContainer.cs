@@ -4,7 +4,7 @@ namespace PlanMe.Domain;
 
 public abstract class TaskContainer : Container<Task>
 {
-    public Task Add(string name)
+    public Task AddTask(string name)
     {
         var task = new Task(IdGenerator.New(Constant.Prefix.TASK))
         {
@@ -14,7 +14,7 @@ public abstract class TaskContainer : Container<Task>
         return task;
     }
 
-    public Task Remove(string id)
+    public Task RemoveTask(string id)
     {
         var task = Items.FirstOrDefault(i => i.Id == id);
         if (task != null)
