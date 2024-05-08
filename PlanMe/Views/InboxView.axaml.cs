@@ -1,7 +1,5 @@
-﻿using System;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Interactivity;
 using PlanMe.Services;
 using PlanMe.ViewModels;
 
@@ -25,27 +23,9 @@ public partial class InboxView : UserControl
             if (DataContext is InboxViewModel model)
             {
                 _planService.AddInboxTask(TextBoxAddTask.Text);
-                model.InboxTasks = _planService.GetInboxTasks(model.IncludeCompleted);
+                model.TaskList.Tasks = _planService.GetInboxTasks(model.TaskList.IncludeCompleted);
                 TextBoxAddTask.Clear();
             }
-        }
-    }
-
-    private void MenuDelete_OnClick(object sender, RoutedEventArgs e)
-    {
-        if (DataContext is InboxViewModel model &&
-            ((MenuItem)sender).DataContext is TaskModel task)
-        {
-            _planService.RemoveTask(task.Id);
-            model.InboxTasks = _planService.GetInboxTasks(model.IncludeCompleted);
-        }
-    }
-
-    private void TaskControl_OnIsCompletedChanged(object sender, EventArgs e)
-    {
-        if (DataContext is InboxViewModel model)
-        {
-            model.InboxTasks = _planService.GetInboxTasks(model.IncludeCompleted);
         }
     }
 }

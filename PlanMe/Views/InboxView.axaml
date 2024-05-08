@@ -15,20 +15,6 @@
                  Watermark="Add Task"
                  KeyDown="InputElement_OnKeyDown">
         </TextBox>
-        <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding InboxTasks}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <v:TaskControl Padding="0, 0, 0, 3" IsCompleteChanged="TaskControl_OnIsCompletedChanged">
-                            <v:TaskControl.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Name="MenuDelete" Header="Delete" Click="MenuDelete_OnClick" />
-                                </ContextMenu>
-                            </v:TaskControl.ContextMenu>
-                        </v:TaskControl>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <v:TaskListView DataContext="{Binding TaskList}" />
     </DockPanel>
 </UserControl>

@@ -5,23 +5,20 @@ namespace PlanMe.ViewModels;
 
 public class InboxViewModel : ViewModelBase
 {
-    private IReadOnlyList<TaskModel> _inboxTasks;
+    private TaskListViewModel _taskList;
 
     public InboxViewModel(IReadOnlyList<TaskModel> inboxTasks)
     {
-        InboxTasks = inboxTasks;
-        IncludeCompleted = true;
+        TaskList = new TaskListViewModel(inboxTasks);
     }
 
-    public IReadOnlyList<TaskModel> InboxTasks
+    public TaskListViewModel TaskList
     {
-        get => _inboxTasks;
+        get => _taskList;
         set
         { 
-            _inboxTasks = value;
+            _taskList = value;
             this.RaisePropertyChanged();
         }
     }
-
-    public bool IncludeCompleted { get; set; }
 }
