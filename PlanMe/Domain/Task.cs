@@ -12,6 +12,8 @@ public class Task : PlanItem
     public Difficulty Difficulty { get; set; }
 
     public Priority Priority { get; set; }
+
+    public Importance Importance { get; set; }
     
     public PlanItem Parent { get; internal set; }
 

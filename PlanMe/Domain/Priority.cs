@@ -2,13 +2,13 @@
 
 public enum Priority
 {
-    Normal,
+    Normal = 0,
     /// <summary>
     /// 悠闲
     /// </summary>
-    Leisurely,
+    Leisurely = -1,
     /// <summary>
     /// 紧急
     /// </summary>
-    Urgent
+    Urgent = 1
 }

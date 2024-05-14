@@ -2,13 +2,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:PlanMe.Views"
+             xmlns:vm="clr-namespace:PlanMe.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="PlanMe.Views.FourQuadrantView">
+             x:Class="PlanMe.Views.FourQuadrantView"
+             x:DataType="vm:FourQuadrantViewModel"
+             >
     <Grid Margin="3" ColumnDefinitions="*, *" RowDefinitions="*, *">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
+        <v:TaskListView DataContext="{Binding ImportantAndUrgentTasks}" Grid.Row="0" Grid.Column="0" />
+        <v:TaskListView DataContext="{Binding ImportantButNotUrgentTasks}" Grid.Row="0" Grid.Column="1" />
+        <v:TaskListView DataContext="{Binding NotImportantButUrgentTasks}" Grid.Row="1" Grid.Column="0" />
+        <v:TaskListView DataContext="{Binding NotImportantAndNotUrgentTasks}" Grid.Row="1" Grid.Column="1" />
     </Grid>
 </UserControl>

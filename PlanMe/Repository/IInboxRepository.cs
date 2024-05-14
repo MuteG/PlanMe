@@ -1,4 +1,5 @@
-﻿using PlanMe.Domain;
+﻿using System.Collections.Generic;
+using PlanMe.Domain;
 
 namespace PlanMe.Repository;
 
@@ -6,7 +7,7 @@ public interface IInboxRepository : IPlanMeRepository
 {
     void Save(Inbox inbox);
 
-    void Remove(string taskId);
+    void RemoveTask(string taskId);
 
-    Inbox Get();
+    List<Task> GetTasks();
 }

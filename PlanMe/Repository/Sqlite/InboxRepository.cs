@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using PlanMe.Domain;
 using PlanMe.Repository.Model;
 
@@ -14,15 +15,15 @@ public class InboxRepository : SqliteRepository, IInboxRepository
         }
     }
 
-    public void Remove(string taskId)
+    public void RemoveTask(string taskId)
     {
         Execute(Sql("INBOX_DELETE"), new { TaskId = taskId });
     }
 
-    public Inbox Get()
+    public List<Task> GetTasks()
     {
-        var inbox = Inbox.Instance;
-        inbox.AddRange(Query<TaskModel>(Sql("INBOX_SELECT_ALL")).Select(m => m.ToTask()));
-        return inbox;
+        return Query<TaskModel>(Sql("INBOX_SELECT_ALL"))
+            .Select(m => m.ToTask())
+            .ToList();
     }
 }

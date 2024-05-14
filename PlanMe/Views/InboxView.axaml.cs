@@ -23,7 +23,7 @@ public partial class InboxView : UserControl
             if (DataContext is InboxViewModel model)
             {
                 _planService.AddInboxTask(TextBoxAddTask.Text);
-                model.TaskList.Tasks = _planService.GetInboxTasks(model.TaskList.IncludeCompleted);
+                model.TaskList.Tasks = _planService.GetInboxTaskModels(model.TaskList.IncludeCompleted);
                 TextBoxAddTask.Clear();
             }
         }

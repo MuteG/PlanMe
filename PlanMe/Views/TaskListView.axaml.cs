@@ -38,7 +38,7 @@ public partial class TaskListView : UserControl
             ((MenuItem)sender).DataContext is TaskModel task)
         {
             _planService.RemoveTask(task.Id);
-            model.Tasks = _planService.GetInboxTasks(model.IncludeCompleted);
+            model.Tasks = _planService.GetInboxTaskModels(model.IncludeCompleted);
         }
     }
 
@@ -46,7 +46,7 @@ public partial class TaskListView : UserControl
     {
         if (DataContext is TaskListViewModel model)
         {
-            model.Tasks = _planService.GetInboxTasks(model.IncludeCompleted);
+            model.Tasks = _planService.GetInboxTaskModels(model.IncludeCompleted);
         }
     }
 }
