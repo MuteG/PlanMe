@@ -14,7 +14,7 @@
                     <v:TaskControl Padding="0, 0, 0, 3" IsCompleteChanged="TaskControl_OnIsCompletedChanged">
                         <v:TaskControl.ContextMenu>
                             <ContextMenu Opening="ContextMenu_OnOpening">
-                                <MenuItem Name="MenuDelete" Header="Delete" Click="MenuDelete_OnClick" />
+                                <MenuItem Name="MenuDelete" Header="{DynamicResource TaskListView.Menu.Delete}" Click="MenuDelete_OnClick" />
                             </ContextMenu>
                         </v:TaskControl.ContextMenu>
                     </v:TaskControl>

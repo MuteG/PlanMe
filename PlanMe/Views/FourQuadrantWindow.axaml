@@ -9,6 +9,6 @@
         x:Class="PlanMe.Views.FourQuadrantWindow"
         x:DataType="vm:FourQuadrantViewModel"
         Icon="/Assets/PlanMe.ico"
-        Title="Four quadrant view">
+        Title="{DynamicResource FourQuadrantWindow.Title}">
     <v:FourQuadrantView />
 </Window>

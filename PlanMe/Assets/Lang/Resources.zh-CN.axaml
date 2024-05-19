@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <system:String x:Key="MainWindow.Title">PlanMe</system:String>
+    <system:String x:Key="TaskListView.Menu.Delete">删除</system:String>
+    <system:String x:Key="FourQuadrantWindow.Title">四象限视图</system:String>
+    <system:String x:Key="InboxView.TextBoxAddTask.Watermark">添加任务</system:String>
+</ResourceDictionary>

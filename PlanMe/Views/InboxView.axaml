@@ -12,7 +12,7 @@
         <TextBox Name="TextBoxAddTask" DockPanel.Dock="Bottom"
                  HorizontalAlignment="Stretch"
                  HorizontalContentAlignment="Left"
-                 Watermark="Add Task"
+                 Watermark="{DynamicResource InboxView.TextBoxAddTask.Watermark}"
                  KeyDown="InputElement_OnKeyDown">
         </TextBox>
         <v:TaskListView DataContext="{Binding TaskList}" />

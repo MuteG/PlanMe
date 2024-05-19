@@ -9,7 +9,7 @@
         x:Class="PlanMe.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/PlanMe.ico"
-        Title="PlanMe">
+        Title="{DynamicResource MainWindow.Title}">
 
     <v:InboxView DataContext="{Binding Inbox}"/>
 
