@@ -1,6 +1,7 @@
 ﻿using PlanMe.Domain;
+using PlanMe.ViewModels;
 
-namespace PlanMe.ViewModels;
+namespace PlanMe.Services.EntityExtensions;
 
 public static class FourQuadrantExtension
 {

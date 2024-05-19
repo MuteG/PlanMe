@@ -42,9 +42,9 @@ public partial class TaskControl : UserControl
                 {
                     _planService.ResumeTask(model.Id);
                 }
+                
+                IsCompleteChanged?.Invoke(this, EventArgs.Empty);
             }
-            
-            IsCompleteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

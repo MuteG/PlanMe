@@ -2,6 +2,7 @@
 using System.Linq;
 using PlanMe.Domain;
 using PlanMe.Repository;
+using PlanMe.Services.EntityExtensions;
 using PlanMe.ViewModels;
 
 namespace PlanMe.Services;
@@ -52,7 +53,7 @@ public class PlanService
     public void CompleteTask(string id)
     {
         var task = Inbox.Instance.Items.FirstOrDefault(i => i.Id == id);
-        if (task != null)
+        if (task != null && task.Status.Type != StatusType.Complete)
         {
             task.Complete();
             var taskRepo = RepositoryFactory.Create<ITaskRepository>();
@@ -63,7 +64,7 @@ public class PlanService
     public void ResumeTask(string id)
     {
         var task = Inbox.Instance.Items.FirstOrDefault(i => i.Id == id);
-        if (task != null)
+        if (task != null && task.Status.Type != StatusType.Waiting)
         {
             task.Resume();
             var taskRepo = RepositoryFactory.Create<ITaskRepository>();

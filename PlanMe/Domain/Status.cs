@@ -1,4 +1,5 @@
-﻿using Avalonia.Media;
+﻿using System;
+using Avalonia.Media;
 
 namespace PlanMe.Domain;
 
@@ -18,4 +19,19 @@ public class Status
     public StatusType Type { get; set; }
     
     public StatusSet Set { get; internal set; }
+
+    public override bool Equals(object other)
+    {
+        if (other is Status otherStatus)
+        {
+            return string.Equals(Id, otherStatus.Id, StringComparison.OrdinalIgnoreCase);
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Id);
+    }
 }

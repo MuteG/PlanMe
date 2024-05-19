@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PlanMe.Domain;
 
@@ -13,6 +14,8 @@ public abstract class Container<T> where T : class
 
     public IReadOnlyList<T> Items => _items;
 
+    public event EventHandler ItemsChanged;
+
     public bool Contains(T item)
     {
         return _items.Contains(item);
@@ -23,6 +26,7 @@ public abstract class Container<T> where T : class
         if (Contains(item)) return;
         _items.Add(item);
         OnAdd(item);
+        ItemsChanged?.Invoke(this, EventArgs.Empty);
     }
 
     protected virtual void OnAdd(T item)
@@ -42,6 +46,7 @@ public abstract class Container<T> where T : class
         if (!Contains(item)) return;
         _items.Remove(item);
         OnRemove(item);
+        ItemsChanged?.Invoke(this, EventArgs.Empty);
     }
 
     protected virtual void OnRemove(T item)
@@ -58,5 +63,6 @@ public abstract class Container<T> where T : class
         
         _items.Remove(item);
         _items.Insert(targetIndex, item);
+        ItemsChanged?.Invoke(this, EventArgs.Empty);
     }
 }
