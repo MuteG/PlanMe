@@ -5,4 +5,8 @@
     <system:String x:Key="TaskListView.Menu.Delete">删除</system:String>
     <system:String x:Key="FourQuadrantWindow.Title">四象限视图</system:String>
     <system:String x:Key="InboxView.TextBoxAddTask.Watermark">添加任务</system:String>
+    <system:String x:Key="FourQuadrantView.Label.ImportantButNotUrgent">重要但不紧急</system:String>
+    <system:String x:Key="FourQuadrantView.Label.ImportantAndUrgent">重要且紧急</system:String>
+    <system:String x:Key="FourQuadrantView.Label.NotImportantAndNotUrgent">不重要且不紧急</system:String>
+    <system:String x:Key="FourQuadrantView.Label.NotImportantButUrgent">不重要但紧急</system:String>
 </ResourceDictionary>

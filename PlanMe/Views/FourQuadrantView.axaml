@@ -9,9 +9,60 @@
              x:DataType="vm:FourQuadrantViewModel"
              >
     <Grid Margin="3" ColumnDefinitions="*, *" RowDefinitions="*, *">
-        <v:TaskListView DataContext="{Binding ImportantAndUrgentTasks}" Grid.Row="0" Grid.Column="0" />
-        <v:TaskListView DataContext="{Binding ImportantButNotUrgentTasks}" Grid.Row="0" Grid.Column="1" />
-        <v:TaskListView DataContext="{Binding NotImportantButUrgentTasks}" Grid.Row="1" Grid.Column="0" />
-        <v:TaskListView DataContext="{Binding NotImportantAndNotUrgentTasks}" Grid.Row="1" Grid.Column="1" />
+        <Border  Grid.Row="0" Grid.Column="0"
+                 BorderBrush="CornflowerBlue"
+                 BorderThickness="1"
+                 CornerRadius="3"
+                 Margin="3">
+            <DockPanel Margin="3">
+                <TextBlock DockPanel.Dock="Top"
+                           Background="Coral"
+                           Foreground="White"
+                           Text="{DynamicResource FourQuadrantView.Label.ImportantButNotUrgent}" />
+                <v:TaskListView DataContext="{Binding ImportantButNotUrgentTasks}" />
+            </DockPanel>
+        </Border>
+        
+        <Border Grid.Row="0" Grid.Column="1"
+                BorderBrush="CornflowerBlue"
+                BorderThickness="1"
+                CornerRadius="3"
+                Margin="3">
+            <DockPanel Margin="3">
+                <TextBlock DockPanel.Dock="Top"
+                           Background="Crimson"
+                           Foreground="White"
+                           Text="{DynamicResource FourQuadrantView.Label.ImportantAndUrgent}" />
+                <v:TaskListView DataContext="{Binding ImportantAndUrgentTasks}" />
+            </DockPanel>
+        </Border>
+        
+        <Border Grid.Row="1" Grid.Column="0"
+                BorderBrush="CornflowerBlue"
+                BorderThickness="1"
+                CornerRadius="3"
+                Margin="3">
+            <DockPanel Margin="3">
+                <TextBlock DockPanel.Dock="Top"
+                           Background="LimeGreen"
+                           Foreground="White"
+                           Text="{DynamicResource FourQuadrantView.Label.NotImportantAndNotUrgent}" />
+                <v:TaskListView DataContext="{Binding NotImportantAndNotUrgentTasks}" />
+            </DockPanel>
+        </Border>
+        
+        <Border Grid.Row="1" Grid.Column="1"
+                BorderBrush="CornflowerBlue"
+                BorderThickness="1"
+                CornerRadius="3"
+                Margin="3">
+            <DockPanel Margin="3">
+                <TextBlock DockPanel.Dock="Top"
+                           Background="Orchid"
+                           Foreground="White"
+                           Text="{DynamicResource FourQuadrantView.Label.NotImportantButUrgent}" />
+                <v:TaskListView DataContext="{Binding NotImportantButUrgentTasks}" />
+            </DockPanel>
+        </Border>
     </Grid>
 </UserControl>

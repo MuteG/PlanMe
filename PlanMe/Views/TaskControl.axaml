@@ -12,6 +12,7 @@
         <vm:TaskModel/>
     </Design.DataContext>
     <Border BorderBrush="CornflowerBlue"
+            Background="White"
             BorderThickness="1"
             CornerRadius="3"
             Padding="3">
@@ -23,7 +24,6 @@
             <Label Content="{Binding Text}"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Stretch"
-                   Background="White"
                    Foreground="{Binding Foreground}"
                    VerticalContentAlignment="Center">
             </Label>
