@@ -5,20 +5,20 @@ public class FourQuadrantViewModel : ViewModelBase
     /// <summary>
     /// 重要且紧急
     /// </summary>
-    public TaskListViewModel ImportantAndUrgentTasks { get; set; }
+    public TitledTaskListViewModel ImportantAndUrgentTasks { get; set; }
 
     /// <summary>
     /// 重要但不紧急
     /// </summary>
-    public TaskListViewModel ImportantButNotUrgentTasks { get; set; }
+    public TitledTaskListViewModel ImportantButNotUrgentTasks { get; set; }
     
     /// <summary>
     /// 不重要但紧急
     /// </summary>
-    public TaskListViewModel NotImportantButUrgentTasks { get; set; }
+    public TitledTaskListViewModel NotImportantButUrgentTasks { get; set; }
     
     /// <summary>
     /// 不重要且不紧急
     /// </summary>
-    public TaskListViewModel NotImportantAndNotUrgentTasks { get; set; }
+    public TitledTaskListViewModel NotImportantAndNotUrgentTasks { get; set; }
 }

@@ -9,7 +9,10 @@ public class InboxViewModel : ViewModelBase
 
     public InboxViewModel(IReadOnlyList<TaskModel> inboxTasks)
     {
-        TaskList = new TaskListViewModel(inboxTasks);
+        TaskList = new TaskListViewModel()
+        {
+            Tasks = inboxTasks
+        };
     }
 
     public TaskListViewModel TaskList

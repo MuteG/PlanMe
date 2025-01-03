@@ -8,9 +8,9 @@ public class TaskListViewModel : ViewModelBase
 {
     private IReadOnlyList<TaskModel> _tasks;
 
-    public TaskListViewModel(IEnumerable<TaskModel> tasks)
+    public TaskListViewModel()
     {
-        Tasks = tasks.ToList();
+        _tasks = new List<TaskModel>();
         IncludeCompleted = true;
     }
 
